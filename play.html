@@ -15,7 +15,8 @@
 </head>
 <body class="bg-info text-light">
     <header class="container-fluid">
-        <h1>SkullKing</h1>
+        <nav class="navbar fixed-top navbar-info">
+          <a class="navbar-brand" href="home.html">SkullKing</a>
           <div class="dropdown">
             <button class="dropbtn">Menu</button>
             <div class="dropdown-content">
@@ -25,7 +26,8 @@
               <a href="about.html">About</a>
             </div>
           </div>
-      </header>
+        </nav>
+    </header>
 
 <main class="container-fluid bg-light text-dark text-center">
     <section>
@@ -64,47 +66,80 @@
     </section>
 
     <section>
-        <div class="container">
-            <div class="playercard">
-                <span class="highlight">Player 1</span>
-                <label for="select">Bid: </label>
-                    <select id="select" name="varSelect">
-                        <option selected>0</option>
-                        <option>1</option>
-                    </select>
-                Total:
+        <div class="row">
+            <div class="col-sm-6">
+              <div class="card w-50">
+                  <h5 class="card-header">Player 1</h5>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        Bid:
+                        <div class="btn-group me-2" role="group" aria-label="Second group">
+                            <button type="button" class="btn btn-secondary">0</button>
+                            <button type="button" class="btn btn-secondary">1</button>
+                            <button type="button" class="btn btn-secondary">2</button>
+                            <button type="button" class="btn btn-secondary">3</button>
+                          </div>
+                    </li>
+                    <li class="list-group-item">Total Score: 0</li>
+                  </ul>
+              </div>
             </div>
-            <div class="playercard">
-                Player 2
-                <label for="select">Bid: </label>
-                    <select id="select" name="varSelect">
-                        <option selected>0</option>
-                        <option>1</option>
-                    </select>
-                Total:
+            <div class="col-sm-6">
+                <div class="card w-50">
+                    <h5 class="card-header">Player 2</h5>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">
+                          Bid:
+                          <div class="btn-group me-2" role="group" aria-label="Second group">
+                              <button type="button" class="btn btn-secondary">0</button>
+                              <button type="button" class="btn btn-secondary">1</button>
+                              <button type="button" class="btn btn-secondary">2</button>
+                              <button type="button" class="btn btn-secondary">3</button>
+                            </div>
+                      </li>
+                      <li class="list-group-item">Total Score: 0</li>
+                    </ul>
+                </div>
             </div>
-            <div class="playercard">
-                Player 3
-                <label for="select">Bid: </label>
-                    <select id="select" name="varSelect">
-                        <option selected>0</option>
-                        <option>1</option>
-                    </select>
-                Total:
+            <div class="col-sm-6">
+                <div class="card w-50">
+                    <h5 class="card-header">Player 3</h5>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">
+                          Bid:
+                          <div class="btn-group me-2" role="group" aria-label="Second group">
+                              <button type="button" class="btn btn-secondary">0</button>
+                              <button type="button" class="btn btn-secondary">1</button>
+                              <button type="button" class="btn btn-secondary">2</button>
+                              <button type="button" class="btn btn-secondary">3</button>
+                            </div>
+                      </li>
+                      <li class="list-group-item">Total Score: 0</li>
+                    </ul>
+                </div>
             </div>
-            <div class="playercard">
-                Player 4
-                <label for="select">Bid: </label>
-                    <select id="select" name="varSelect">
-                        <option selected>0</option>
-                        <option>1</option>
-                    </select>
-                Total:
+            <div class="col-sm-6">
+                <div class="card w-50">
+                    <h5 class="card-header">Player 4</h5>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">
+                          Bid:
+                          <div class="btn-group me-2" role="group" aria-label="Second group">
+                              <button type="button" class="btn btn-secondary">0</button>
+                              <button type="button" class="btn btn-secondary">1</button>
+                              <button type="button" class="btn btn-secondary">2</button>
+                              <button type="button" class="btn btn-secondary">3</button>
+                            </div>
+                      </li>
+                      <li class="list-group-item">Total Score: 0</li>
+                    </ul>
+                </div>
             </div>
-          </div>
+        </div>
     </section>
 
     <section>
+        <button type="submit" class="btn btn-primary btn-lg">Add Player</button>
         <button type="submit" class="btn btn-primary btn-lg">Start Round</button>
     </section>    
   </main>
