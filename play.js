@@ -1,11 +1,17 @@
+//get player name
+const playerNameEl = document.querySelector('.player-name');
+playerNameEl.textContent = this.getPlayerName();
+
+function getPlayerName() {
+    return localStorage.getItem('userName') ?? 'Mystery player';
+}
+
 //add and remove player buttons
 const addPlayerBtn = document.getElementById("add-player-btn");
 const removePlayerBtn = document.getElementById("remove-player-btn");
 const parentElement = document.getElementById("player-cards-wrapper");
 
 addPlayerBtn.addEventListener("click", function() {
-
-
     if (parentElement.children.length < 6) {
         const div1 = document.createElement("div");
         div1.className = "col-sm-6";
@@ -36,28 +42,40 @@ addPlayerBtn.addEventListener("click", function() {
         button.className = "btn btn-secondary";
         button.textContent = i;
         div3.appendChild(button);
-    }
+        }
 
-    const li2 = document.createElement("li");
-    li2.className = "list-group-item";
-    li2.textContent = "Total Score: 0";
+        const li2 = document.createElement("li");
+        li2.className = "list-group-item";
+        li2.textContent = "Total Score: 0";
 
-    li1.appendChild(bidText);
-    li1.appendChild(div3);
+        li1.appendChild(bidText);
+        li1.appendChild(div3);
 
-    ul.appendChild(li1);
-    ul.appendChild(li2);
+        ul.appendChild(li1);
+        ul.appendChild(li2);
 
-    div2.appendChild(h5);
-    div2.appendChild(ul);
+        div2.appendChild(h5);
+        div2.appendChild(ul);
 
-    div1.appendChild(div2);
+        div1.appendChild(div2);
 
-    parentElement.appendChild(div1);
+        parentElement.appendChild(div1);
     } else {
-    // Display pop-up message
-    alert("You can only add up to 6 players!");
+        // Display pop-up message
+        alert("You can only add up to 6 players!");
     }
+});
+
+removePlayerBtn.addEventListener("click", function() {
+  if (parentElement.children.length > 1) {
+    const lastChild = parentElement.lastChild;
+    if (lastChild) {
+      parentElement.removeChild(lastChild);
+    }
+  } else {
+    // Display pop-up message
+    alert("You must have at least 2 players!");
+  }
 });
 
 //next round button
@@ -85,18 +103,6 @@ nextRoundButton.addEventListener('click', () => {
     }
 });
 
-removePlayerBtn.addEventListener("click", function() {
-  if (parentElement.children.length > 1) {
-    const lastChild = parentElement.lastChild;
-    if (lastChild) {
-        parentElement.removeChild(lastChild);
-    }
-  } else {
-    // Display pop-up message
-    alert("You must have at least 2 players!");
-  }
-});
-
 function newPerson() {
     $('#player-cards-wrapper').append('<div class="col-sm-6"><div class="card w-50"><h5 class="card-header"><span class="player-name"></span></h5><ul class="list-group list-group-flush"><li class="list-group-item">Bid:<div class="btn-group me-2 bid-counter" role="group" aria-label="Second group"><button type="button" class="btn btn-secondary">0</button><button type="button" class="btn btn-secondary">1</button><button type="button" class="btn btn-secondary">2</button><button type="button" class="btn btn-secondary">3</button></div></li><li class="list-group-item">Total Score: 0</li></ul></div></div>')
 }
@@ -120,4 +126,15 @@ function scoreCalc(playerBid, roundNumber, tricksTaken, bonusPoints, playerScore
     return playerScore + roundScore;
 }
 
-const game = new Game();
+//save scores
+function saveScore(playerScore) {
+    const userName = this.getPlayerName();
+    let scores = [];
+    const scoresText = localStorage.getItem('scores');
+    if (scoresText) {
+      scores = JSON.parse(scoresText);
+    }
+    scores = this.updateScores(userName, playerScore, scores);
+
+    localStorage.setItem('scores', JSON.stringify(scores));
+  }
