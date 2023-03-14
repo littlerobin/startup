@@ -31,37 +31,11 @@
 
         <main class="container-fluid bg-light text-dark text-center">
             <section>
-                <div class="stepper-container">
-                    <div id="step-counter-1" class="stepper-item">
-                        <div class="step-counter">1</div>
+                <div id="round-tracker">
+                    <div id="progress-bar">
+                      <div id="progress"></div>
                     </div>
-                    <div id="step-counter-2" class="stepper-item">
-                        <div class="step-counter">2</div>
-                    </div>
-                    <div id="step-counter-3" class="stepper-item">
-                        <div class="step-counter">3</div>
-                    </div>
-                    <div id="step-counter-4" class="stepper-item">
-                        <div class="step-counter">4</div>
-                    </div>
-                    <div id="step-counter-5" class="stepper-item">
-                        <div class="step-counter">5</div>
-                    </div>
-                    <div id="step-counter-6" class="stepper-item">
-                        <div class="step-counter">6</div>
-                    </div>
-                    <div id="step-counter-7" class="stepper-item">
-                        <div class="step-counter">7</div>
-                    </div>
-                    <div id="step-counter-8" class="stepper-item">
-                        <div class="step-counter">8</div>
-                    </div>
-                    <div id="step-counter-9" class="stepper-item">
-                        <div class="step-counter">9</div>
-                    </div>
-                    <div id="step-counter-10" class="stepper-item">
-                        <div class="step-counter">10</div>
-                    </div>
+                    <h1>Round <span id="round-number">1</span> of 10</h1>
                 </div>
             </section>
 
@@ -137,11 +111,10 @@
                     </div>
                 </div>
             </section>
-
             <section>
                 <button id="add-player-btn" type="submit" class="btn btn-primary btn-lg">Add Player</button>
                 <button id="remove-player-btn" type="sumit" class="btn btn-primary btn-lg">Remove Player</button>
-                <button type="submit" class="btn btn-primary btn-lg">Start Round</button>
+                <button id="next-round-button" type="submit" class="btn btn-primary btn-lg">Start Game</button>
             </section>    
         </main>
 
