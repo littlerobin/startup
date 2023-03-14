@@ -32,59 +32,57 @@
         <main class="container-fluid bg-light text-dark text-center">
             <section>
                 <div class="stepper-container">
-                    <div class="stepper-item completed">
+                    <div id="step-counter-1" class="stepper-item">
                         <div class="step-counter">1</div>
                     </div>
-                    <div class="stepper-item completed">
+                    <div id="step-counter-2" class="stepper-item">
                         <div class="step-counter">2</div>
                     </div>
-                    <div class="stepper-item completed">
+                    <div id="step-counter-3" class="stepper-item">
                         <div class="step-counter">3</div>
                     </div>
-                    <div class="stepper-item completed">
+                    <div id="step-counter-4" class="stepper-item">
                         <div class="step-counter">4</div>
                     </div>
-                    <div class="stepper-item completed">
+                    <div id="step-counter-5" class="stepper-item">
                         <div class="step-counter">5</div>
                     </div>
-                    <div class="stepper-item completed">
+                    <div id="step-counter-6" class="stepper-item">
                         <div class="step-counter">6</div>
                     </div>
-                    <div class="stepper-item completed">
+                    <div id="step-counter-7" class="stepper-item">
                         <div class="step-counter">7</div>
                     </div>
-                    <div class="stepper-item active">
+                    <div id="step-counter-8" class="stepper-item">
                         <div class="step-counter">8</div>
                     </div>
-                    <div class="stepper-item">
+                    <div id="step-counter-9" class="stepper-item">
                         <div class="step-counter">9</div>
                     </div>
-                    <div class="stepper-item">
+                    <div id="step-counter-10" class="stepper-item">
                         <div class="step-counter">10</div>
                     </div>
                 </div>
             </section>
 
             <section>
-                <div class="row">
+                <div id="player-cards-wrapper" class="row">
                     <div class="col-sm-6">
-                    <div class="card w-50">
-                        <h5 class="card-header">
-                            <span class="player-name"></span>
-                        </h5>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                                Bid:
-                                <div class="btn-group me-2 bid-counter" role="group" aria-label="Second group">
-                                    <button type="button" class="btn btn-secondary">0</button>
-                                    <button type="button" class="btn btn-secondary">1</button>
-                                    <button type="button" class="btn btn-secondary">2</button>
-                                    <button type="button" class="btn btn-secondary">3</button>
-                                </div>
-                            </li>
-                            <li class="list-group-item">Total Score: 0</li>
-                        </ul>
-                    </div>
+                        <div class="card w-50">
+                            <h5 class="card-header">Player 1</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    Bid:
+                                    <div class="btn-group me-2 bid-counter" role="group" aria-label="Second group">
+                                        <button type="button" class="btn btn-secondary">0</button>
+                                        <button type="button" class="btn btn-secondary">1</button>
+                                        <button type="button" class="btn btn-secondary">2</button>
+                                        <button type="button" class="btn btn-secondary">3</button>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">Total Score: 0</li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="card w-50">
@@ -141,7 +139,8 @@
             </section>
 
             <section>
-                <button type="submit" class="btn btn-primary btn-lg">Add Player</button>
+                <button id="add-player-btn" type="submit" class="btn btn-primary btn-lg">Add Player</button>
+                <button id="remove-player-btn" type="sumit" class="btn btn-primary btn-lg">Remove Player</button>
                 <button type="submit" class="btn btn-primary btn-lg">Start Round</button>
             </section>    
         </main>
