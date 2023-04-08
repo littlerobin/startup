@@ -82,6 +82,8 @@ removePlayerBtn.addEventListener("click", function() {
 const roundNumberElement = document.getElementById('round-number');
 const progressElement = document.getElementById('progress');
 const nextRoundButton = document.getElementById('next-round-button');
+const bidInput = document.getElementById('bid-input');
+const tricksInput = document.getElementById('tricks-input');
 let currentRound = 0;
 
 nextRoundButton.addEventListener('click', () => {
@@ -91,13 +93,18 @@ nextRoundButton.addEventListener('click', () => {
     if (currentRound < 10) {
         if (currentRound < 10 && currentRound >= 0) {
             nextRoundButton.textContent = 'Next Round';
-    }
+        }
+        const playerBid = Number(bidInput.value);
+        const tricksTaken = Number(tricksInput.value);
+        const bonusPoints = // some value you need to get
+        const playerScore = // some value you need to get
+        const roundScore = scoreCalc(playerBid, currentRound, tricksTaken, bonusPoints, playerScore);
         currentRound++;
         roundNumberElement.textContent = currentRound;
         progressElement.style.width = `${(currentRound / 10) * 100}%`;
         if (currentRound === 10) {
             nextRoundButton.textContent = 'End Game';
-    }
+        }
     } else {
         alert('Game Over!');
         currentRound = 0;
@@ -110,14 +117,14 @@ function newPerson() {
     $('#player-cards-wrapper').append('<div class="col-sm-6"><div class="card w-50"><h5 class="card-header"><span class="player-name"></span></h5><ul class="list-group list-group-flush"><li class="list-group-item">Bid:<div class="btn-group me-2 bid-counter" role="group" aria-label="Second group"><button type="button" class="btn btn-secondary">0</button><button type="button" class="btn btn-secondary">1</button><button type="button" class="btn btn-secondary">2</button><button type="button" class="btn btn-secondary">3</button></div></li><li class="list-group-item">Total Score: 0</li></ul></div></div>')
 }
 
-function scoreCalc(playerBid, roundNumber, tricksTaken, bonusPoints, playerScore) {
+function scoreCalc(playerBid, roundNumber, tricksTaken, playerScore) {
     let roundScore = 0;
 
     if(playerBid === tricksTaken) {
         if(playerBid === 0) {
             roundScore = playerBid * roundNumber * 10;
         } else {
-            roundScore = playerBid * 20 + bonusPoints;
+            roundScore = playerBid * 20;
         }
     } else {
         if(playerBid === 0) {

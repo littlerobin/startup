@@ -5,10 +5,10 @@ const userName = 'holowaychuk';
 const password = 'express';
 const hostname = 'mongodb.com';
 
-const url = `mongodb+srv://emilygailasay:wXw7RcqGiZeCLkWv@startup.9qpc7no.mongodb.net/`;
+const url = `mongodb+srv://emilygailasay:<password>@startup.9qpc7no.mongodb.net/`;
 
 async function main() {
-    const client = new MongoClient(url);
+const client = new MongoClient(url);
 
     const scoreCollection = await client.db('startup').collection('score').insertMany(data);
 
