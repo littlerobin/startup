@@ -21,40 +21,37 @@ footer {
     text-align: center;
 }
 
+.players {
+    padding: 10px;
+    text-align: left;
+}
+
 /* Round Tracker */
 #round-tracker {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  #progress-bar {
+}
+
+#progress-bar {
     width: 75%;
     height: 20px;
     background-color: #ddd;
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 20px;
-  }
-  
-  #progress {
+}
+
+#progress {
     height: 100%;
     background-color: #4CAF50;
     width: 0%;
     transition: width 0.3s ease-in-out;
-  }
-  
-  #round-number {
+}
+
+#round-number {
     font-weight: bold;
     margin-bottom: 20px;
-  }
-  
-  #next-round-button {
-    padding: 10px 20px;
-    border-radius: 10px;
-    color: #fff;
-    border: none;
-    cursor: pointer;
 }
 
 /* Nav Bar */

@@ -82,14 +82,14 @@ removePlayerBtn.addEventListener("click", function() {
 const roundNumberElement = document.getElementById('round-number');
 const progressElement = document.getElementById('progress');
 const nextRoundButton = document.getElementById('next-round-button');
-let currentRound = 1;
+let currentRound = 0;
 
 nextRoundButton.addEventListener('click', () => {
     addPlayerBtn.style.display = "none";
     removePlayerBtn.style.display = "none";
 
     if (currentRound < 10) {
-        if (currentRound < 10 && currentRound >= 1) {
+        if (currentRound < 10 && currentRound >= 0) {
             nextRoundButton.textContent = 'Next Round';
     }
         currentRound++;
@@ -100,6 +100,9 @@ nextRoundButton.addEventListener('click', () => {
     }
     } else {
         alert('Game Over!');
+        currentRound = 0;
+        progressElement.style.width = `${(currentRound / 10) * 100}%`;
+        currentRound = 0;
     }
 });
 
@@ -137,4 +140,4 @@ function saveScore(playerScore) {
     scores = this.updateScores(userName, playerScore, scores);
 
     localStorage.setItem('scores', JSON.stringify(scores));
-  }
+}
