@@ -1,4 +1,4 @@
-//get player name
+//Update player name
 const playerNameEl = document.querySelector('.player-name');
 playerNameEl.textContent = this.getPlayerName();
 
@@ -6,98 +6,94 @@ function getPlayerName() {
     return localStorage.getItem('userName') ?? 'Mystery player';
 }
 
-//add and remove player buttons
-const addPlayerBtn = document.getElementById("add-player-btn");
-const removePlayerBtn = document.getElementById("remove-player-btn");
-const parentElement = document.getElementById("player-cards-wrapper");
-
-addPlayerBtn.addEventListener("click", function() {
-    if (parentElement.children.length < 6) {
-        const div1 = document.createElement("div");
-        div1.className = "col-sm-6";
-
-        const div2 = document.createElement("div");
-        div2.className = "card w-50";
-
-        const h5 = document.createElement("h5");
-        h5.className = "card-header";
-        h5.textContent = "Player " + (parentElement.children.length + 1);
-
-        const ul = document.createElement("ul");
-        ul.className = "list-group list-group-flush";
-
-        const li1 = document.createElement("li");
-        li1.className = "list-group-item";
-
-        const bidText = document.createTextNode("Bid:");
-
-        const div3 = document.createElement("div");
-        div3.className = "btn-group me-2";
-        div3.setAttribute("role", "group");
-        div3.setAttribute("aria-label", "Second group");
-
-        for (let i = 0; i <= 3; i++) {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "btn btn-secondary";
-        button.textContent = i;
-        div3.appendChild(button);
+// Calculate and update the total scores for each round
+function calculateTotals() {
+    // Loop through each row in the table body and calculate the total for that row
+    for (let i = 0; i < document.getElementsByTagName('tbody')[0].rows.length; i++) {
+        const row = document.getElementsByTagName('tbody')[0].rows[i];
+        let total = 0;
+        // Loop through each input in the row and add up the values
+        for (let j = 1; j <= 10; j++) {
+            total += (Number(row.cells[j].getElementsByTagName('input')[0].value)*20);
         }
+        // Set the total for the row
+        row.cells[11].innerHTML = total;
+    }
+}
 
-        const li2 = document.createElement("li");
-        li2.className = "list-group-item";
-        li2.textContent = "Total Score: 0";
+// Calculate and return the total for a specific round
+function getRoundTotal(roundNumber) {
+    let total = 0;
+    // Loop through each row in the table body and add up the values for the specified round
+    for (let i = 0; i < document.getElementsByTagName('tbody')[0].rows.length; i++) {
+        const row = document.getElementsByTagName('tbody')[0].rows[i];
+        if (Number(row.cells[roundNumber].getElementsByTagName('input')[0].value) === 0) {
+            total += (Number(row.cells[roundNumber].getElementsByTagName('input')[0].value)*(row.cells[roundNumber]*10));
+        } else {
+        total += (Number(row.cells[roundNumber].getElementsByTagName('input')[0].value)*20);
+        }
+    }
+    return total;
+}
 
-        li1.appendChild(bidText);
-        li1.appendChild(div3);
+// Attach event listeners to the input elements to recalculate the totals when they are changed
+const inputs = document.getElementsByTagName('input');
+for (let i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener('change', calculateTotals);
+}
 
-        ul.appendChild(li1);
-        ul.appendChild(li2);
+// Get the add player button and scorecard body
+const addPlayerBtn = document.getElementById("add-player-btn");
+const scorecardBody = document.getElementById("scorecard-body");
 
-        div2.appendChild(h5);
-        div2.appendChild(ul);
+// Add an event listener to the add player button
+addPlayerBtn.addEventListener("click", () => {
+    // Get the number of players already added
+    const numPlayers = scorecardBody.children.length;
 
-        div1.appendChild(div2);
+    // Check if there are already 4 players added
+    if (numPlayers >= 4) {
+        return;
+    }
 
-        parentElement.appendChild(div1);
-    } else {
-        // Display pop-up message
-        alert("You can only add up to 6 players!");
+    // Create a new player row
+    const newPlayer = document.createElement("tr");
+    newPlayer.innerHTML = `
+        <td>Player ${numPlayers + 1}</td>
+        <td><input type="number" min="0" max="1" value="0"></td>
+        <td><input type="number" min="0" max="2" value="0"></td>
+        <td><input type="number" min="0" max="3" value="0"></td>
+        <td><input type="number" min="0" max="4" value="0"></td>
+        <td><input type="number" min="0" max="5" value="0"></td>
+        <td><input type="number" min="0" max="6" value="0"></td>
+        <td><input type="number" min="0" max="7" value="0"></td>
+        <td><input type="number" min="0" max="8" value="0"></td>
+        <td><input type="number" min="0" max="9" value="0"></td>
+        <td><input type="number" min="0" max="10" value="0"></td>
+        <td id="total-score">0</td>
+    `;
+
+    // Add the new player row to the scorecard body
+    scorecardBody.appendChild(newPlayer);
+
+    // If there are now 4 players, hide the add player button
+    if (numPlayers + 1 === 4) {
+        addPlayerBtn.classList.add("hide");
     }
 });
 
-removePlayerBtn.addEventListener("click", function() {
-  if (parentElement.children.length > 1) {
-    const lastChild = parentElement.lastChild;
-    if (lastChild) {
-      parentElement.removeChild(lastChild);
-    }
-  } else {
-    // Display pop-up message
-    alert("You must have at least 2 players!");
-  }
-});
-
-//next round button
+// Add event listener to the next round button
+const nextRoundButton = document.getElementById('next-round-button');
 const roundNumberElement = document.getElementById('round-number');
 const progressElement = document.getElementById('progress');
-const nextRoundButton = document.getElementById('next-round-button');
-const bidInput = document.getElementById('bid-input');
-const tricksInput = document.getElementById('tricks-input');
 let currentRound = 0;
 
 nextRoundButton.addEventListener('click', () => {
-    addPlayerBtn.style.display = "none";
-    removePlayerBtn.style.display = "none";
 
     if (currentRound < 10) {
         if (currentRound < 10 && currentRound >= 0) {
             nextRoundButton.textContent = 'Next Round';
         }
-        const playerBid = Number(bidInput.value);
-        const tricksTaken = Number(tricksInput.value);
-        const playerScore = 0;
-        const roundScore = scoreCalc(playerBid, currentRound, tricksTaken, bonusPoints, playerScore);
         currentRound++;
         roundNumberElement.textContent = currentRound;
         progressElement.style.width = `${(currentRound / 10) * 100}%`;
@@ -108,42 +104,13 @@ nextRoundButton.addEventListener('click', () => {
         alert('Game Over!');
         currentRound = 0;
         progressElement.style.width = `${(currentRound / 10) * 100}%`;
-        currentRound = 0;
+        for (let i = 0; i < scorecardBody.children.length; i++) {
+            const row = scorecardBody.children[i];
+            const inputFields = row.querySelectorAll("input[type=number]");
+            inputFields.forEach(input => {
+              input.value = 0;
+            });
+            row.lastElementChild.textContent = ""
+        }
     }
 });
-
-function newPerson() {
-    $('#player-cards-wrapper').append('<div class="col-sm-6"><div class="card w-50"><h5 class="card-header"><span class="player-name"></span></h5><ul class="list-group list-group-flush"><li class="list-group-item">Bid:<div class="btn-group me-2 bid-counter" role="group" aria-label="Second group"><button type="button" class="btn btn-secondary">0</button><button type="button" class="btn btn-secondary">1</button><button type="button" class="btn btn-secondary">2</button><button type="button" class="btn btn-secondary">3</button></div></li><li class="list-group-item">Total Score: 0</li></ul></div></div>')
-}
-
-function scoreCalc(playerBid, roundNumber, tricksTaken, playerScore) {
-    let roundScore = 0;
-
-    if(playerBid === tricksTaken) {
-        if(playerBid === 0) {
-            roundScore = playerBid * roundNumber * 10;
-        } else {
-            roundScore = playerBid * 20;
-        }
-    } else {
-        if(playerBid === 0) {
-            roundScore = roundNumber * -10;
-        } else {
-            roundScore = Math.abs(playerBid - tricksTaken) * -10;
-        }
-    }
-    return playerScore + roundScore;
-}
-
-//save scores
-function saveScore(playerScore) {
-    const userName = this.getPlayerName();
-    let scores = [];
-    const scoresText = localStorage.getItem('scores');
-    if (scoresText) {
-      scores = JSON.parse(scoresText);
-    }
-    scores = this.updateScores(userName, playerScore, scores);
-
-    localStorage.setItem('scores', JSON.stringify(scores));
-}
