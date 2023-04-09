@@ -1,3 +1,12 @@
+//Update player name
+const playerNameEl = document.querySelector('.player-name');
+playerNameEl.textContent = this.getPlayerName();
+
+function getPlayerName() {
+    return localStorage.getItem('userName') ?? 'Mystery player';
+}
+
+
 // Calculate and update the total scores for each round
 function calculateTotals() {
     // Loop through each row in the table body and calculate the total for that row
@@ -62,7 +71,7 @@ addPlayerBtn.addEventListener("click", () => {
         <td><input type="number" min="0" max="8" value="0"></td>
         <td><input type="number" min="0" max="9" value="0"></td>
         <td><input type="number" min="0" max="10" value="0"></td>
-        <td></td>
+        <td id="total-${numPlayers + 1}">0</td>
     `;
 
     // Add the new player row to the scorecard body

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>SkullKing</title>
+        <title>SkullKing Scorecard</title>
         <link rel="icon" href="skullicon.ico" />
         <link rel="stylesheet" href="main.css" />
         <link
@@ -13,7 +13,8 @@
       crossorigin="anonymous"
     />
     </head>
-    <body class="bg-info text-light">
+
+    <body class="bg-info text-dark">
         <header class="container-fluid">
             <nav class="navbar navbar-info">
             <a class="navbar-brand" href="index.html">SkullKing</a>
@@ -29,69 +30,74 @@
             </nav>
         </header>
 
-        <main class="container-fluid bg-light text-dark text-center">
-            <section>
-                <div id="round-tracker">
-                    <div id="progress-bar">
-                      <div id="progress"></div>
-                    </div>
-                    <h1>Round <span id="round-number">0</span> of 10</h1>
+        <section>
+            <div id="round-tracker">
+                <div id="progress-bar">
+                  <div id="progress"></div>
                 </div>
-                <div class="players">
-                    <span class="player-name">Player</span>
-                    's game
-                </div>
-            </section>
+                <h1>Round <span id="round-number">0</span> of 10</h1>
+            </div>
+            <div class="players">
+                <span class="player-name">Player</span>'s game
+            </div>
+        </section>
 
-            <section>
-                <div id="player-cards-wrapper" class="row">
-                    <div class="col-sm-6">
-                        <div class="card w-50">
-                            <h5 class="card-header"><input type="text" class="player-name" placeholder="Enter name"></h5>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Bid:<input type="number" id="bid-input" min="0" max="${currentRound}"></li>
-                                <li class="list-group-item">Total Score: 0</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card w-50">
-                            <h5 class="card-header"><input type="text" class="player-name" placeholder="Enter name"></h5>
-                            <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Bid:<input type="number" id="bid-input" min="0" max="${currentRound}"></li>
-                            <li class="list-group-item">Tricks Won:<input type="number" id="tricks-input" min="0" max="${currentRound}"></li>
-                            <li class="list-group-item">Total Score: 0</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card w-50">
-                            <h5 class="card-header"><input type="text" class="player-name" placeholder="Enter name"></h5>
-                            <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Bid:<input type="number" id="bid-input" min="0" max="${currentRound}"></li>
-                            <li class="list-group-item">Tricks Won:<input type="number" id="tricks-input" min="0" max="${currentRound}"></li>
-                            <li class="list-group-item">Total Score: 0</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card w-50">
-                            <h5 class="card-header"><input type="text" class="player-name" placeholder="Enter name"></h5>
-                            <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Bid:<input type="number" id="bid-input" min="0" max="${currentRound}"></li>
-                            <li class="list-group-item">Tricks Won:<input type="number" id="tricks-input" min="0" max="${currentRound}"></li>
-                            <li class="list-group-item">Total Score: 0</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section>
-                <button id="add-player-btn" type="submit" class="btn btn-primary btn-lg">Add Player</button>
-                <button id="remove-player-btn" type="sumit" class="btn btn-primary btn-lg">Remove Player</button>
-                <button id="next-round-button" type="submit" class="btn btn-primary btn-lg">Start Game</button>
-            </section>    
-        </main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Player Name</th>
+                    <th>Round 1</th>
+                    <th>Round 2</th>
+                    <th>Round 3</th>
+                    <th>Round 4</th>
+                    <th>Round 5</th>
+                    <th>Round 6</th>
+                    <th>Round 7</th>
+                    <th>Round 8</th>
+                    <th>Round 9</th>
+                    <th>Round 10</th>
+                    <th>Player Scores</th>
+                </tr>
+            </thead>
+            <tbody id="scorecard-body">
+                <tr>
+                    <td>Player 1</td>
+                    <td><input type="number" min="0" max="1" value="0"></td>
+                    <td><input type="number" min="0" max="2" value="0"></td>
+                    <td><input type="number" min="0" max="3" value="0"></td>
+                    <td><input type="number" min="0" max="4" value="0"></td>
+                    <td><input type="number" min="0" max="5" value="0"></td>
+                    <td><input type="number" min="0" max="6" value="0"></td>
+                    <td><input type="number" min="0" max="7" value="0"></td>
+                    <td><input type="number" min="0" max="8" value="0"></td>
+                    <td><input type="number" min="0" max="9" value="0"></td>
+                    <td><input type="number" min="0" max="10" value="0"></td>
+                    <td id="total-1">0</td>
+                </tr>
+                <tr>
+                    <td>Player 2</td>
+                    <td><input type="number" min="0" max="1" value="0"></td>
+                    <td><input type="number" min="0" max="2" value="0"></td>
+                    <td><input type="number" min="0" max="3" value="0"></td>
+                    <td><input type="number" min="0" max="4" value="0"></td>
+                    <td><input type="number" min="0" max="5" value="0"></td>
+                    <td><input type="number" min="0" max="6" value="0"></td>
+                    <td><input type="number" min="0" max="7" value="0"></td>
+                    <td><input type="number" min="0" max="8" value="0"></td>
+                    <td><input type="number" min="0" max="9" value="0"></td>
+                    <td><input type="number" min="0" max="10" value="0"></td>
+                    <td id="total-2">0</td>
+                </tr>
+                <!-- Add more rows for additional players -->
+            </tbody>
+        </table>
+
+        <section>
+            <button id="add-player-btn" type="submit" class="btn btn-primary btn-lg">Add Player</button>
+            <button id="next-round-button" type="submit" class="btn btn-primary btn-lg">Start Game</button>
+        </section>
+
+        <script src="scorecard.js"></script>
 
         <footer>
             <hr />

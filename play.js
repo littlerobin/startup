@@ -96,8 +96,7 @@ nextRoundButton.addEventListener('click', () => {
         }
         const playerBid = Number(bidInput.value);
         const tricksTaken = Number(tricksInput.value);
-        const bonusPoints = // some value you need to get
-        const playerScore = // some value you need to get
+        const playerScore = 0;
         const roundScore = scoreCalc(playerBid, currentRound, tricksTaken, bonusPoints, playerScore);
         currentRound++;
         roundNumberElement.textContent = currentRound;
