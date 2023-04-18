@@ -1,0 +1,15 @@
+{
+  "name": "startup",
+  "version": "1.0.0",
+  "description": "Grandpa Beck's card game Skull King has become one of the most popular card games in friend groups around the country. The game is exciting, but the scoring is tedious and hard to learn. With the electronic skull king score card however, that issue becomes a thing of the past. The clear labeling, and easily interpretable layout does all the calculations and hard-thinking for you. Just input the scores and let the application do the rest.",
+  "main": "database.js.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^5.3.0"
+  }
+}
