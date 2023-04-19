@@ -37,6 +37,12 @@ main {
     flex-direction: column;
     justify-content: space-around;
 }
+
+#loginControls {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
   
 footer {
     padding: 10px;
