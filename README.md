@@ -77,3 +77,12 @@ Bootstrap/CSS qs:
   how to make navbar flow better
   how to make player cards form in grid better and have spacing in between the rows
   
+# Start up service
+	
+I had a lot of trouble initially setting up MongoDB Atlas so that it would work right, but figured out quickly that in order to make things work you need to make sure all of the relevant files have been saved, and try quitting and restarting your shell session. Those things helped me to figure it out and make things work!
+	
+I also had trouble getting the login to work. I had all of the right files and things but it still wasn't working so I knew there was some disconnect between the front end and the back end. After reviewing the contents of the Simon login assignment and preceeding pages I managed to get it working.
+	
+Service in general seems like a very tricky part of the web application development process as a whole but it is obviously a very important one. I know in this class we are only scratching the surface of web development and programming but having learned everything that I have this semester I feel like I am prepared to take on some more challenging things. I have built a great base of knowledge. 
+	
+Node.js, MongoDB, endpoints, and webSockets are all very important to any website I have found. I would be curious to see how complicated things can get with login authentication in particular, it is an essential aspect of any website or app that stores user information.
